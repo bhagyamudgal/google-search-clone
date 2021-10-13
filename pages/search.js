@@ -14,7 +14,7 @@ import {
   NewspaperIcon,
   PhotographIcon,
   PlayIcon,
-} from "@heroIcons/react/solid";
+} from "@heroicons/react/solid";
 
 // import response from "../response";
 

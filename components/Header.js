@@ -1,5 +1,5 @@
 import Avatar from "./Avatar";
-import { ViewGridIcon } from "@heroIcons/react/solid";
+import { ViewGridIcon } from "@heroicons/react/solid";
 
 function Header() {
   return (

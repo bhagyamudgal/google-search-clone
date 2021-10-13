@@ -2,8 +2,8 @@ import Head from "next/head";
 import Image from "next/image";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import { MicrophoneIcon } from "@heroIcons/react/solid";
-import { SearchIcon } from "@heroIcons/react/outline";
+import { MicrophoneIcon } from "@heroicons/react/solid";
+import { SearchIcon } from "@heroicons/react/outline";
 import { useRef } from "react";
 import { useRouter } from "next/router";
 
