@@ -2,8 +2,9 @@ import Head from "next/head";
 import Image from "next/image";
 import Avatar from "../components/Avatar";
 import SearchResults from "../components/SearchResults";
+import Footer from "../components/Footer";
 import { useRouter } from "next/router";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import {
   XIcon,
   MicrophoneIcon,
@@ -19,6 +20,7 @@ import response from "../response";
 
 function Search({ results }) {
   const router = useRouter();
+
   const searchInputRef = useRef(null);
 
   const search = (e) => {
@@ -28,7 +30,6 @@ function Search({ results }) {
     if (!term) return;
 
     router.push(`/search?term=${term}`);
-    searchInputRef.current.value = "";
   };
 
   const handleKeyPress = (e) => {
@@ -64,6 +65,7 @@ function Search({ results }) {
               type="text"
               className="flex-grow w-full focus:outline-none"
               ref={searchInputRef}
+              defaultValue={router.query.term}
               onKeyPress={handleKeyPress}
             />
             <XIcon
@@ -123,6 +125,8 @@ function Search({ results }) {
       </header>
 
       <SearchResults results={results} />
+
+      <Footer />
     </div>
   );
 }
@@ -130,14 +134,24 @@ function Search({ results }) {
 export default Search;
 
 export const getServerSideProps = async (ctx) => {
-  const useDummyData = true;
-  const responseData = useDummyData
-    ? response
-    : await fetch(
-        `https://www.googleapis.com/customsearch/v1?key=${process.env.GOOGLE_SEARCH_API_KEY}&cx=${process.env.CONTEXT_KEY}&q=${ctx.query.term}`
-      );
+  //   const useDummyData = true;
 
-  const data = useDummyData ? responseData : await responseData.json();
+  //   const startIndex = ctx.query.start || "0";
+  //   const responseData = useDummyData
+  //     ? response
+  //     : await fetch(
+  //         `https://www.googleapis.com/customsearch/v1?key=${process.env.GOOGLE_SEARCH_API_KEY}&cx=${process.env.CONTEXT_KEY}&q=${ctx.query.term}&start=${startIndex}`
+  //       );
+
+  //   const data = useDummyData ? responseData : await responseData.json();
+
+  const startIndex = ctx.query.start || "0";
+
+  const responseData = await fetch(
+    `https://www.googleapis.com/customsearch/v1?key=${process.env.GOOGLE_SEARCH_API_KEY}&cx=${process.env.CONTEXT_KEY}&q=${ctx.query.term}&start=${startIndex}`
+  );
+
+  const data = await responseData.json();
 
   return {
     props: {
