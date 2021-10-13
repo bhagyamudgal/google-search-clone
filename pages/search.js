@@ -4,7 +4,7 @@ import Avatar from "../components/Avatar";
 import SearchResults from "../components/SearchResults";
 import Footer from "../components/Footer";
 import { useRouter } from "next/router";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import {
   XIcon,
   MicrophoneIcon,
@@ -16,7 +16,7 @@ import {
   PlayIcon,
 } from "@heroIcons/react/solid";
 
-import response from "../response";
+// import response from "../response";
 
 function Search({ results }) {
   const router = useRouter();
