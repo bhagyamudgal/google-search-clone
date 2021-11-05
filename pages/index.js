@@ -28,7 +28,7 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center">
+    <div className="flex flex-col items-center justify-between min-h-screen">
       <Head>
         <title>Google Search Clone</title>
         <meta
@@ -40,7 +40,7 @@ export default function Home() {
 
       <Header />
 
-      <form className="flex flex-col items-center flex-grow w-4/5 mt-32">
+      <form className="flex flex-col items-center flex-grow w-4/5 mt-32 mb-32">
         <Image
           width={"350"}
           height={"200"}
